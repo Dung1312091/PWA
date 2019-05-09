@@ -33,9 +33,10 @@ class App extends React.Component {
   }
   click = async () => {
     const token = await askForPermissioToReceiveNotifications();
-    axios.post(' http://7e0d2332.ngrok.io/post', {
-      token: token,
-      
+    axios.get('https://nodepushnotifirebase.herokuapp.com/pushnoti', {
+      params: {
+        token: token
+      }
     })
     .then(function (response) {
       console.log(response);
@@ -46,7 +47,7 @@ class App extends React.Component {
     return (
       <div >
          <button onClick={this.click} >
-          Click here to receive notifications
+          push notifications ...
         </button>
           <button onClick={this.getUser}>
             Get User
